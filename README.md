@@ -20,9 +20,93 @@ $$f \to g$$
 
 between infinite-dimensional (vector) function spaces, such as the space of continuous functions. These mappings are known as **operators**. Operators take a function $f$ as input and return another function $g$ as output.
 
----
+Let $D \subset \mathbb{R}^n$ be an open and bounded subset. Consider the following family of partial differential equations:
 
-*Entendido. A partir de ahora, traduciré todo el texto que me envíes al inglés con formato Markdown listo para un README. Quedo a la espera del siguiente bloque.*
+$$\begin{cases} (L_a u)(x) = f(x), & x \in D, \\ u(x) = 0, & x \in \partial D \end{cases}$$
+
+where $a \in A$, $u \in U$ is the solution to the differential equation, and $f \in U^*$.
+
+Providing a solution to the equation implies finding the function $u \in U$ such that:
+
+$$L_a(u) = f \implies (L_a)^{-1}(f) = u \equiv (L^{-1} f)(a) = u$$
+
+With this, we can construct the operator:
+
+$$G^\dagger := L^{-1} f : A \to U$$
+
+$$a \mapsto u$$
+
+We have converted the resolution of a PDE into a problem of learning its solution operator:
+
+$$G^\dagger : (A, \mu) \to U$$
+
+$$a \mapsto u$$
+
+Given a probability distribution $\mu$ over $A$, we assume we are given the observations $\{a^{(i)}, u^{(i)}\}_{i=1}^N$, where $a^{(i)} \in A$ are i.i.d. samples drawn from $\mu$, and $u^{(i)} = G^\dagger(a^{(i)})$.
+
+We aim to construct an approximation of $G^\dagger$ via a parametric family of operators:
+
+$$G_\theta : A \to U, \quad \theta \in \mathbb{R}^p$$
+
+by choosing $\theta^\dagger \in \mathbb{R}^p$ such that $G_{\theta^\dagger} \approx G^\dagger$.
+
+We will not always have access to the functions themselves, but rather to a discretization of them.
+
+Assume we are given $n$ values $a_i = a(x_i)$ of a function $a$ at points $\{x_i\}_{i=1}^n$. With these data, we want to design a model that maps the lists:
+
+$$(a(x_1), a(x_2), \dots, a(x_n)) \to (u(y_1), u(y_2), \dots, u(y_m))$$
+
+where $x_i$ are the grid points and $y_j$ are the query points for $u$.
+
+To learn this mapping, we could use an MLP such that:
+
+$$u = f(a) = f_L \circ f_{L-1} \circ \dots \circ f_1(a)$$
+
+where:
+
+$$y^{[\ell]} = f_\ell(y^{[\ell-1]}) = \sigma^{[\ell]}(K^{[\ell-1]} y^{[\ell-1]} + b^{[\ell-1]})$$
+
+Or, in the case of a single layer, the $j$-th component is:
+
+$$u_j := (Ka + b)_j = \sum_{i=1}^n K_{ji} a_i + b_j$$
+
+However, this would still be a mapping between finite-dimensional spaces $\mathbb{R}^n \to \mathbb{R}^m$.
+
+However, if we assume that $K_{ji}$ and $b_j$ are evaluations of the functions $\kappa$ and $b$ at the input points $x_i$ and query points $y_j$, the result is a mapping from the input function $a$ to an output function $u$.
+
+In this way:
+
+$$u_j = \sum_{i=1}^n K_{ji} a_i + b_j$$
+
+$$\downarrow$$
+
+becomes:
+
+$$u(y_j) = \sum_{i=1}^n \kappa(x_i, y_j) a(x_i) \Delta_i + b(y_j)$$
+
+## Transformation into an Integral Operator
+
+For a sufficiently fine point grid ($n \to \infty$):
+
+$$u(y_j) := \sum_{i=1}^n \kappa(x_i, y_j) a(x_i) \Delta_i + b(y_j) \approx \int_D \kappa(x, y_j) a(x) \, dx + b(y_j)$$
+
+The kernel functions $\kappa$ and bias functions $b$ can be parameterized using neural networks.
+
+In this way, we have converted the linear regression operation in finite-dimensional spaces:
+
+$$x \to Wx + b$$
+
+into one in infinite-dimensional spaces via the affine linear operator:
+
+$$a \to K(a) + b$$
+
+Conceptually, this is the analogue of a weight matrix in a standard neural network within function spaces.
+
+With this, we can construct the analogue of a standard neural network in function spaces by successively composing these layers with activation functions.
+
+In this way, we can approximate the operator $G^\dagger$ using the parametric family:
+
+$$G_\theta := \sigma_T (K_{T-1} + b_{T-1}) \circ \dots \circ \sigma_1 (K_0 + b_0)$$
 
 # Fourier Neural Operators
 

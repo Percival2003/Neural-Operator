@@ -1,5 +1,12 @@
 # Neural-Operator
-This repository presents the code developed for my Bachelor's Thesis on neural operators, specifically focusing on predicting 2D fluid velocity using the Navier-Stokes equations
+This repository presents the code developed for my Bachelor's Thesis on neural operators, specifically focusing on predicting 2D fluid velocity using the Navier-Stokes equations.
+
+The proposed work will consist, first, of a rigorous exposition of the mathematical
+foundations of neural operators, including their functional formulation, approximation
+properties, and their relationship with classical numerical methods for differential
+equations. Subsequently, a chapter will be dedicated specifically to Fourier Neural
+Operators, detailing their algorithmic structure, interpretation, and the theoretical
+results justifying their applicability. Finally, we will use this theoretical framework to train a model to predict the solutions to the 2D Navier-Stokes equations for an incompressible fluid.
 
 # Introducction to Neural Operators
 Neural Operators constitute a mathematical framework oriented toward learning map
@@ -49,6 +56,8 @@ We aim to construct an approximation of $G^\dagger$ via a parametric family of o
 $$G_\theta : A \to U, \quad \theta \in \mathbb{R}^p$$
 
 by choosing $\theta^\dagger \in \mathbb{R}^p$ such that $G_{\theta^\dagger} \approx G^\dagger$.
+
+# Building Neural Operators
 
 We will not always have access to the functions themselves, but rather to a discretization of them.
 
@@ -114,12 +123,50 @@ Among the most prominent architectures are Fourier Neural
 Operators (FNO), which perform the operator’s primary updates in the frequency do
 main via discrete Fourier transforms. This approach provides an efficient approximation
 capable of generalizing across spatial meshes different from those utilized during training.
-The proposed work will consist, first, of a rigorous exposition of the mathematical
-foundations of neural operators, including their functional formulation, approximation
-properties, and their relationship with classical numerical methods for differential
-equations. Subsequently, a chapter will be dedicated specifically to Fourier Neural
-Operators, detailing their algorithmic structure, interpretation, and the theoretical
-results justifying their applicability.
+
+Although this architecture can be very efficient, it still has a limitation.
+
+The input functions $a : D \to \mathbb{R}^m$ are defined on a spatial domain $D \subset \mathbb{R}^n$.
+
+This makes the model biased toward the specific training domain.
+
+We can solve this by applying the Fourier transform $\mathcal{F}$ to the input function.
+
+The model is now trained in the frequency domain.
+
+We assume that $D = \mathbb{T}^d$ is the unit torus and that all functions are complex-valued.
+
+We start from the integral operator $K_\theta$:
+
+$$(K_\theta v)(x) = \int_D \kappa_\theta(x, y) v(y) \, dy$$
+
+In particular, when $\kappa_\theta(x, y) = \kappa_\theta(x - y)$, the operator $K_\theta$ is a convolution:
+
+$$(K_\theta v)(x) = \int_D \kappa_\theta(x - y) v(y) \, dy = \kappa_\theta * v$$
+
+Convolution satisfies:
+
+$$f * g = \mathcal{F}^{-1}(\mathcal{F}(f) \cdot \mathcal{F}(g))$$
+
+We can rewrite the operator as:
+
+$$(K_\theta v)(x) = \mathcal{F}^{-1}(\mathcal{F}(\kappa_\theta) \cdot \mathcal{F}(v))(x)$$
+
+Converting a convolution in the physical domain into a simple product in the frequency domain, where $\mathcal{F}(\kappa_\theta) = R_\theta$:
+
+$$(K_\theta v)(x) = \mathcal{F}^{-1}(R_\theta \cdot \mathcal{F}(v))(x)$$
+
+Note that if $\kappa_\theta : D \to \mathbb{C}^{d_v \times d_v} \implies \mathcal{F}(\kappa_\theta) \equiv R_\theta : \mathbb{Z}^d \to \mathbb{C}^{d_v \times d_v}$.
+
+Instead of learning the kernel $\kappa_\theta$ in the physical domain, we learn $R_\theta$ in the frequency domain.
+
+By operating directly in the frequency domain, it captures non-local relationships that would be complex to model through spatiotemporal coordinates.
+
+This architecture can be represented as follows:
+
+IMAGEN
+
+# Navier - Stokes
 Next, the study will address several classical problems in mathematical physics formu
 lated as differential equations, such as the Navier–Stokes equations, Burger’s equation,
 and other linear or nonlinear systems. For each, the corresponding formulation will be

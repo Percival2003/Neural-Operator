@@ -165,6 +165,16 @@ Our objective is to critically analyze how neural operators—and
 Fourier operators in particular—can be employed to approximate the solutions of these
 models, conceptually comparing this approach with traditional numerical methods. To this end, we use the 2D incompressible Navier-Stokes equations as an example. 
 
-IMÁGENES
+$$
+\begin{aligned}
+\frac{\partial u}{\partial t}(x,t) + u(x,t) \cdot \nabla u(x,t) &= -\nabla p(x,t) + \nu \nabla^2 u(x,t) + f(x) \\
+\nabla \cdot u(x,t) &= 0 \\
+u(x,0) &= u_0(x)
+\end{aligned}
+$$
+
+where $x \in \mathbb{T}^2$ and $t \in (0, \infty)$.
 
 We train a model capable of predicting the fluid velocity field as the output (the solution to the equation).
+
+IMÁGENES

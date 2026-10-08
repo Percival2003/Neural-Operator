@@ -117,6 +117,8 @@ In this way, we can approximate the operator $G^\dagger$ using the parametric fa
 
 $$G_\theta := \sigma_T (K_{T-1} + b_{T-1}) \circ \dots \circ \sigma_1 (K_0 + b_0)$$
 
+This architecture is known as neural operators.
+
 # Fourier Neural Operators
 
 Among the most prominent architectures are Fourier Neural

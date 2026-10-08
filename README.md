@@ -161,10 +161,10 @@ This architecture can be represented as follows:
 IMAGEN
 
 # Navier - Stokes
-Next, the study will address several classical problems in mathematical physics formu
-lated as differential equations, such as the Navier–Stokes equations, Burger’s equation,
-and other linear or nonlinear systems. For each, the corresponding formulation will be
-presented, alongside its framing as an operator problem amenable to approximation
-via neural operators. The objective is to critically analyze how neural operators—and
+Our objective is to critically analyze how neural operators—and
 Fourier operators in particular—can be employed to approximate the solutions of these
-models, conceptually comparing this approach with traditional numerical methods.
+models, conceptually comparing this approach with traditional numerical methods. To this end, we use the 2D incompressible Navier-Stokes equations as an example. 
+
+IMÁGENES
+
+We train a model capable of predicting the fluid velocity field as the output (the solution to the equation).

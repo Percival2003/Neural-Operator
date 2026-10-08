@@ -124,17 +124,9 @@ Operators (FNO), which perform the operator’s primary updates in the frequency
 main via discrete Fourier transforms. This approach provides an efficient approximation
 capable of generalizing across spatial meshes different from those utilized during training.
 
-Although this architecture can be very efficient, it still has a limitation.
+Although this architecture can be very efficient, it still has a limitation: the input functions $a : D \to \mathbb{R}^m$ are defined on a spatial domain $D \subset \mathbb{R}^n$. This makes the model biased toward the specific training domain.
 
-The input functions $a : D \to \mathbb{R}^m$ are defined on a spatial domain $D \subset \mathbb{R}^n$.
-
-This makes the model biased toward the specific training domain.
-
-We can solve this by applying the Fourier transform $\mathcal{F}$ to the input function.
-
-The model is now trained in the frequency domain.
-
-We assume that $D = \mathbb{T}^d$ is the unit torus and that all functions are complex-valued.
+We can solve this by applying the Fourier transform $\mathcal{F}$ to the input function. The model is now trained in the frequency domain. We assume that $D = \mathbb{T}^d$ is the unit torus and that all functions are complex-valued.
 
 We start from the integral operator $K_\theta$:
 

@@ -160,7 +160,7 @@ This architecture can be represented as follows:
 
 IMAGEN
 
-# Navier - Stokes equation solutions
+# Navier-Stokes equation solutions
 Our objective is to critically analyze how neural operators—and
 Fourier operators in particular—can be employed to approximate the solutions of these
 models, conceptually comparing this approach with traditional numerical methods. To this end, we use the 2D incompressible Navier-Stokes equations as an example. 

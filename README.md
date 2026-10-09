@@ -177,4 +177,4 @@ We train a model capable of predicting the fluid velocity field as the output (t
 
 <img src="https://github.com/Percival2003/Neural-Operator/blob/7b7c5a68ffc53f28a1615c3ad97ce26256e4de73/Images/Evoluci%C3%B3n%20error%20relativo%20L2.png" alt="Texto alternativo" width="500">
 <img src="https://github.com/Percival2003/Neural-Operator/blob/7b7c5a68ffc53f28a1615c3ad97ce26256e4de73/Images/Evoluci%C3%B3n%20error%20cuadr%C3%A1tico%20medio.png" alt="Texto alternativo" width="500">
-<img src="https://github.com/Percival2003/Neural-Operator/blob/7b7c5a68ffc53f28a1615c3ad97ce26256e4de73/Images/Predicci%C3%B3n%20de%20un%20frame.png" alt="Texto alternativo" width="500">
+<img src="https://github.com/Percival2003/Neural-Operator/blob/7b7c5a68ffc53f28a1615c3ad97ce26256e4de73/Images/Predicci%C3%B3n%20de%20un%20frame.png" alt="Texto alternativo" width="700">

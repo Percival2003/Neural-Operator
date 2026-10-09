@@ -199,7 +199,7 @@ If you use this repository, the underlying dataset, or the `neuraloperator` libr
 ### Fourier Neural Operator Paper
 
 ```bibtex
-@inproceedings{li2021fourier,
+@article{li2021fourier,
   title={Fourier Neural Operator for Parametric Partial Differential Equations},
   author={Zongyi Li and Nikola Kovachki and Kamyar Azizzadenesheli and Burigede Liu and Kaushik Bhattacharya and Andrew Stuart and Anima Anandkumar},
   booktitle={International Conference on Learning Representations (ICLR)},

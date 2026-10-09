@@ -175,6 +175,6 @@ where $x \in \mathbb{T}^2$ and $t \in (0, \infty)$.
 
 We train a model capable of predicting the fluid velocity field as the output (the solution to the equation).
 
-<img src="https://github.com/Percival2003/Neural-Operator/blob/7b7c5a68ffc53f28a1615c3ad97ce26256e4de73/Images/Evoluci%C3%B3n%20error%20relativo%20L2.png  https://github.com/Percival2003/Neural-Operator/blob/7b7c5a68ffc53f28a1615c3ad97ce26256e4de73/Images/Evol" alt="Texto alternativo" width="500">
-<img src="https://github.com/Percival2003/Neural-Operator/blob/d2b80b437a16ada7afa4e0aed91b98c178eccff4/Images/FNO.png" alt="Texto alternativo" width="500">
+<img src="https://github.com/Percival2003/Neural-Operator/blob/7b7c5a68ffc53f28a1615c3ad97ce26256e4de73/Images/Evoluci%C3%B3n%20error%20relativo%20L2.png" alt="Texto alternativo" width="500">
+<img src="https://github.com/Percival2003/Neural-Operator/blob/7b7c5a68ffc53f28a1615c3ad97ce26256e4de73/Images/Evol" alt="Texto alternativo" width="500">
 <img src="https://github.com/Percival2003/Neural-Operator/blob/7b7c5a68ffc53f28a1615c3ad97ce26256e4de73/Images/Predicci%C3%B3n%20de%20un%20frame.png" alt="Texto alternativo" width="500">

@@ -179,4 +179,83 @@ We train a model capable of predicting the fluid velocity field as the output (t
 <img src="https://github.com/Percival2003/Neural-Operator/blob/7b7c5a68ffc53f28a1615c3ad97ce26256e4de73/Images/Evoluci%C3%B3n%20error%20cuadr%C3%A1tico%20medio.png" alt="Texto alternativo" width="400">
 <img src="https://github.com/Percival2003/Neural-Operator/blob/7b7c5a68ffc53f28a1615c3ad97ce26256e4de73/Images/Predicci%C3%B3n%20de%20un%20frame.png" alt="Texto alternativo" width="700">
 
+Respuesta corta: **Legamente no estás obligado** (salvo que hayas copiado código fuente directamente dentro de tus archivos), pero **académica y científicamente es altamente recomendado** (y es la norma de conducta en proyectos de investigación/código abierto).
 
+Aquí te explico los detalles de cada caso y cómo añadirlo correctamente a tu README:
+
+---
+
+### 1. ¿Cuál es la diferencia entre cada tipo de librería?
+
+* **Librerías especializadas de investigación (`neuraloperator`):**
+* Los autores de la librería `neuraloperator` (desarrollada por el grupo de Caltech y colaboradores) **piden explícitamente en su repositorio** que los cites si utilizas su código.
+* Al ser un paquete específico de tu área de estudio, citarla le da crédito directo a los investigadores que programaron la arquitectura que estás usando.
+
+
+* **Frameworks generales y herramientas (`PyTorch`, `TensorFlow`, `pandas`, `numpy`):**
+* Para herramientas de propósito general no se suele incluir una cita en formato BibTeX completa dentro del README (a menos que estés escribiendo un *paper* o artículo formal para una revista).
+* En un repositorio de GitHub, basta con listarlas en las dependencias (`requirements.txt`), en el apartado de **Instalación/Requisitos** y opcionalmente en una sección de **Agradecimientos / Créditos (Acknowledgements)**.
+
+
+
+---
+
+### 2. ¿Cómo debes incluirlo en tu README?
+
+Puedes actualizar las secciones de **Agradecimientos** y **Citas** al final de tu README para dar el crédito correspondiente a la librería y a las herramientas utilizadas:
+
+#### Opción para añadir/sustituir al final de tu `README.md`:
+
+```markdown
+---
+
+## Acknowledgements
+
+This repository heavily relies on the following open-source packages and frameworks:
+
+* **[neuraloperator](https://github.com/neuraloperator/neuraloperator):** PyTorch implementation of Neural Operators.
+* **[PyTorch](https://pytorch.org/):** Tensor computation and deep learning framework.
+* **[NumPy](https://numpy.org/) & [SciPy](https://scipy.org/):** Numerical computing and spatial computations.
+* **[Matplotlib](https://matplotlib.org/):** Visualization and figure generation.
+
+---
+
+## Citation & References
+
+If you use this repository, the underlying dataset, or the `neuraloperator` library, please cite the foundational works:
+
+### Fourier Neural Operator Paper
+```bibtex
+@inproceedings{li2021fourier,
+  title={Fourier Neural Operator for Parametric Partial Differential Equations},
+  author={Zongyi Li and Nikola Kovachki and Kamyar Azizzadenesheli and Burigede Liu and Kaushik Bhattacharya and Andrew Stuart and Anima Anandkumar},
+  booktitle={International Conference on Learning Representations (ICLR)},
+  year={2021}
+}
+
+```
+
+### Neural Operator Software Library
+
+```bibtex
+@misc{neuraloperator2021,
+  author = {Zongyi Li and Daniel Zhengyu Huang and Nikola Kovachki and Kamyar Azizzadenesheli and Anima Anandkumar},
+  title = {NeuralOperator: Learning mappings between function spaces},
+  year = {2021},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{[https://github.com/neuraloperator/neuraloperator](https://github.com/neuraloperator/neuraloperator)}}
+}
+
+```
+
+```
+
+---
+
+### Resumen de ventajas de citar la librería:
+1. **Reproducibilidad:** Si alguien intenta correr tu código, sabrá exactamente con qué librería se construyó el modelo.
+2. **Ética académica:** Reconoce el esfuerzo de los desarrolladores de la librería.
+3. **Visibilidad:** Ayuda a que tu repositorio luzca profesional y alineado con los estándares de la comunidad de *Scientific Machine Learning* (SciML).
+
+```

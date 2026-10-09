@@ -179,61 +179,7 @@ We train a model capable of predicting the fluid velocity field as the output (t
 <img src="https://github.com/Percival2003/Neural-Operator/blob/7b7c5a68ffc53f28a1615c3ad97ce26256e4de73/Images/Evoluci%C3%B3n%20error%20cuadr%C3%A1tico%20medio.png" alt="Texto alternativo" width="400">
 <img src="https://github.com/Percival2003/Neural-Operator/blob/7b7c5a68ffc53f28a1615c3ad97ce26256e4de73/Images/Predicci%C3%B3n%20de%20un%20frame.png" alt="Texto alternativo" width="700">
 
-Respuesta corta: **Legamente no estás obligado** (salvo que hayas copiado código fuente directamente dentro de tus archivos), pero **académica y científicamente es altamente recomendado** (y es la norma de conducta en proyectos de investigación/código abierto).
 
-Aquí te explico los detalles de cada caso y cómo añadirlo correctamente a tu README:
-
----
-
-### 1. ¿Cuál es la diferencia entre cada tipo de librería?
-
-* **Librerías especializadas de investigación (`neuraloperator`):**
-* Los autores de la librería `neuraloperator` (desarrollada por el grupo de Caltech y colaboradores) **piden explícitamente en su repositorio** que los cites si utilizas su código.
-* Al ser un paquete específico de tu área de estudio, citarla le da crédito directo a los investigadores que programaron la arquitectura que estás usando.
-
-
-* **Frameworks generales y herramientas (`PyTorch`, `TensorFlow`, `pandas`, `numpy`):**
-* Para herramientas de propósito general no se suele incluir una cita en formato BibTeX completa dentro del README (a menos que estés escribiendo un *paper* o artículo formal para una revista).
-* En un repositorio de GitHub, basta con listarlas en las dependencias (`requirements.txt`), en el apartado de **Instalación/Requisitos** y opcionalmente en una sección de **Agradecimientos / Créditos (Acknowledgements)**.
-
-
-
----
-
-### 2. ¿Cómo debes incluirlo en tu README?
-
-Puedes actualizar las secciones de **Agradecimientos** y **Citas** al final de tu README para dar el crédito correspondiente a la librería y a las herramientas utilizadas:
-
-#### Opción para añadir/sustituir al final de tu `README.md`:
-
-```markdown
----
-
-## Acknowledgements
-
-This repository heavily relies on the following open-source packages and frameworks:
-
-* **[neuraloperator](https://github.com/neuraloperator/neuraloperator):** PyTorch implementation of Neural Operators.
-* **[PyTorch](https://pytorch.org/):** Tensor computation and deep learning framework.
-* **[NumPy](https://numpy.org/) & [SciPy](https://scipy.org/):** Numerical computing and spatial computations.
-* **[Matplotlib](https://matplotlib.org/):** Visualization and figure generation.
-
----
-
-## Citation & References
-
-If you use this repository, the underlying dataset, or the `neuraloperator` library, please cite the foundational works:
-
-### Fourier Neural Operator Paper
-```bibtex
-@inproceedings{li2021fourier,
-  title={Fourier Neural Operator for Parametric Partial Differential Equations},
-  author={Zongyi Li and Nikola Kovachki and Kamyar Azizzadenesheli and Burigede Liu and Kaushik Bhattacharya and Andrew Stuart and Anima Anandkumar},
-  booktitle={International Conference on Learning Representations (ICLR)},
-  year={2021}
-}
-
-```
 
 ### Neural Operator Software Library
 
@@ -259,3 +205,342 @@ If you use this repository, the underlying dataset, or the `neuraloperator` libr
 3. **Visibilidad:** Ayuda a que tu repositorio luzca profesional y alineado con los estándares de la comunidad de *Scientific Machine Learning* (SciML).
 
 ```
+
+
+
+
+
+
+
+
+
+Aquí tienes el archivo `README.md` completo, unificado y actualizado con la sección de **Agradecimientos** y la cita formal de la librería **`neuraloperator`**:
+
+```markdown
+# Neural Operators & Fourier Neural Operators (FNO)
+
+[![Python](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-ee4c2c.svg)](https://pytorch.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+A PyTorch implementation and mathematical exposition of **Neural Operators** and **Fourier Neural Operators (FNO)** applied to learning solution operators for parametric Partial Differential Equations (PDEs), specifically targeting the 2D incompressible Navier-Stokes equations.
+
+---
+
+## Table of Contents
+- [Overview](#overview)
+- [Installation](#installation)
+- [Repository Structure](#repository-structure)
+- [Quickstart \& Usage](#quickstart--usage)
+- [Dataset](#dataset)
+- [Introduction to Neural Operators](#introduction-to-neural-operators)
+- [Building Neural Operators](#building-neural-operators)
+- [Fourier Neural Operators](#fourier-neural-operators)
+- [Navier-Stokes Equation Solutions](#navier-stokes-equation-solutions)
+- [Acknowledgements](#acknowledgements)
+- [Citation \& References](#citation--references)
+- [License](#license)
+
+---
+
+## Overview
+
+The proposed work consists of a rigorous exposition of the mathematical foundations of neural operators, including their functional formulation, approximation properties, and their relationship with classical numerical methods for differential equations. Subsequently, a section is dedicated specifically to Fourier Neural Operators, detailing their algorithmic structure, interpretation, and theoretical results justifying their applicability. Finally, we use this theoretical framework to train a model to predict the solutions to the 2D Navier-Stokes equations for an incompressible fluid.
+
+---
+
+## Installation
+
+### Requirements
+- Python 3.9+
+- CUDA-compatible GPU (recommended for training)
+
+### Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/Percival2003/Neural-Operator.git](https://github.com/Percival2003/Neural-Operator.git)
+   cd Neural-Operator
+
+```
+
+2. **Create a virtual environment (optional):**
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+```
+
+
+3. **Install dependencies:**
+```bash
+pip install -r requirements.txt
+
+```
+
+
+
+---
+
+## Repository Structure
+
+```text
+.
+├── data/                  # Scripts for downloading and loading PDE datasets
+├── models/                # Neural Operator architecture implementations
+│   ├── fno1d.py           # 1D Fourier Neural Operator
+│   └── fno2d.py           # 2D Fourier Neural Operator
+├── utils/                 # Relative L2 loss functions, metrics, and plotting functions
+├── Images/                # Diagnostic plots and error evolution graphs
+├── train.py               # Training script for 2D Navier-Stokes
+├── evaluate.py            # Model evaluation and visual prediction generation
+├── requirements.txt       # Project dependencies
+└── README.md              # Project documentation
+
+```
+
+---
+
+## Quickstart & Usage
+
+### 1. Training
+
+To train the FNO model on the Navier-Stokes dataset:
+
+```bash
+python train.py --epochs 100 --batch-size 32 --lr 0.001 --modes 12 --width 32
+
+```
+
+### 2. Evaluation & Visualization
+
+To evaluate a trained checkpoint and generate prediction plots:
+
+```bash
+python evaluate.py --checkpoint weights/fno_ns2d.pt
+
+```
+
+---
+
+## Dataset
+
+The 2D Navier-Stokes dataset contains viscous incompressible fluid flow simulations under periodic boundary conditions.
+
+* **Storage:** Place the dataset files (`NavierStokes_2d.mat` or `.pt`) inside the `data/` directory.
+
+---
+
+## Introduction to Neural Operators
+
+Neural Operators constitute a mathematical framework oriented toward learning mappings between function spaces, with the objective of approximating operators that act upon solutions to differential equations. Unlike traditional neural models, which learn finite-dimensional functions, neural operators are formulated as universal approximators of nonlinear operators between function spaces.
+
+Classical neural networks aim to approximate functions:
+
+$$x \to f(x)$$
+
+between finite-dimensional Euclidean spaces, such as $\mathbb{R}^d$. More specifically, they take a vector $x$ as input and return another vector $f(x)$ as output.
+
+In contrast, we want to construct mappings:
+
+$$f \to g$$
+
+between infinite-dimensional (vector) function spaces, such as the space of continuous functions. These mappings are known as **operators**. Operators take a function $f$ as input and return another function $g$ as output.
+
+Let $D \subset \mathbb{R}^n$ be an open and bounded subset. Consider the following family of partial differential equations:
+
+$$\begin{cases} (L_a u)(x) = f(x), & x \in D, \\ u(x) = 0, & x \in \partial D \end{cases}$$
+
+where $a \in A$, $u \in U$ is the solution to the differential equation, and $f \in U^*$.
+
+Providing a solution to the equation implies finding the function $u \in U$ such that:
+
+$$L_a(u) = f \implies (L_a)^{-1}(f) = u \equiv (L^{-1} f)(a) = u$$
+
+With this, we can construct the operator:
+
+$$G^\dagger := L^{-1} f : A \to U$$
+
+$$a \mapsto u$$
+
+We have converted the resolution of a PDE into a problem of learning its solution operator:
+
+$$G^\dagger : (A, \mu) \to U$$
+
+$$a \mapsto u$$
+
+Given a probability distribution $\mu$ over $A$, we assume we are given the observations $\{a^{(i)}, u^{(i)}\}_{i=1}^N$, where $a^{(i)} \in A$ are i.i.d. samples drawn from $\mu$, and $u^{(i)} = G^\dagger(a^{(i)})$.
+
+We aim to construct an approximation of $G^\dagger$ via a parametric family of operators:
+
+$$G_\theta : A \to U, \quad \theta \in \mathbb{R}^p$$
+
+by choosing $\theta^\dagger \in \mathbb{R}^p$ such that $G_{\theta^\dagger} \approx G^\dagger$.
+
+---
+
+## Building Neural Operators
+
+We will not always have access to the functions themselves, but rather to a discretization of them.
+
+Assume we are given $n$ values $a_i = a(x_i)$ of a function $a$ at points $\{x_i\}_{i=1}^n$. With these data, we want to design a model that maps the lists:
+
+$$(a(x_1), a(x_2), \dots, a(x_n)) \to (u(y_1), u(y_2), \dots, u(y_m))$$
+
+where $x_i$ are the grid points and $y_j$ are the query points for $u$.
+
+To learn this mapping, we could use an MLP such that:
+
+$$u = f(a) = f_L \circ f_{L-1} \circ \dots \circ f_1(a)$$
+
+where:
+
+$$y^{[\ell]} = f_\ell(y^{[\ell-1]}) = \sigma^{[\ell]}(K^{[\ell-1]} y^{[\ell-1]} + b^{[\ell-1]})$$
+
+Or, in the case of a single layer, the $j$-th component is:
+
+$$u_j := (Ka + b)_j = \sum_{i=1}^n K_{ji} a_i + b_j$$
+
+However, this would still be a mapping between finite-dimensional spaces $\mathbb{R}^n \to \mathbb{R}^m$.
+
+However, if we assume that $K_{ji}$ and $b_j$ are evaluations of the functions $\kappa$ and $b$ at the input points $x_i$ and query points $y_j$, the result is a mapping from the input function $a$ to an output function $u$.
+
+In this way:
+
+$$u_j = \sum_{i=1}^n K_{ji} a_i + b_j$$
+
+$$\downarrow$$
+
+becomes:
+
+$$u(y_j) = \sum_{i=1}^n \kappa(x_i, y_j) a(x_i) \Delta_i + b(y_j)$$
+
+### Transformation into an Integral Operator
+
+For a sufficiently fine point grid ($n \to \infty$):
+
+$$u(y_j) := \sum_{i=1}^n \kappa(x_i, y_j) a(x_i) \Delta_i + b(y_j) \approx \int_D \kappa(x, y_j) a(x) \, dx + b(y_j)$$
+
+The kernel functions $\kappa$ and bias functions $b$ can be parameterized using neural networks.
+
+In this way, we have converted the linear regression operation in finite-dimensional spaces:
+
+$$x \to Wx + b$$
+
+into one in infinite-dimensional spaces via the affine linear operator:
+
+$$a \to K(a) + b$$
+
+Conceptually, this is the analogue of a weight matrix in a standard neural network within function spaces.
+
+With this, we can construct the analogue of a standard neural network in function spaces by successively composing these layers with activation functions.
+
+In this way, we can approximate the operator $G^\dagger$ using the parametric family:
+
+$$G_\theta := \sigma_T (K_{T-1} + b_{T-1}) \circ \dots \circ \sigma_1 (K_0 + b_0)$$
+
+This architecture is known as neural operators.
+
+---
+
+## Fourier Neural Operators
+
+Among the most prominent architectures are Fourier Neural Operators (FNO), which perform the operator’s primary updates in the frequency domain via discrete Fourier transforms. This approach provides an efficient approximation capable of generalizing across spatial meshes different from those utilized during training.
+
+Although this architecture can be very efficient, it still has a limitation: the input functions $a : D \to \mathbb{R}^m$ are defined on a spatial domain $D \subset \mathbb{R}^n$. This makes the model biased toward the specific training domain.
+
+We can solve this by applying the Fourier transform $\mathcal{F}$ to the input function. The model is now trained in the frequency domain. We assume that $D = \mathbb{T}^d$ is the unit torus and that all functions are complex-valued.
+
+We start from the integral operator $K_\theta$:
+
+$$(K_\theta v)(x) = \int_D \kappa_\theta(x, y) v(y) \, dy$$
+
+In particular, when $\kappa_\theta(x, y) = \kappa_\theta(x - y)$, the operator $K_\theta$ is a convolution:
+
+$$(K_\theta v)(x) = \int_D \kappa_\theta(x - y) v(y) \, dy = \kappa_\theta * v$$
+
+Convolution satisfies:
+
+$$f * g = \mathcal{F}^{-1}(\mathcal{F}(f) \cdot \mathcal{F}(g))$$
+
+We can rewrite the operator as:
+
+$$(K_\theta v)(x) = \mathcal{F}^{-1}(\mathcal{F}(\kappa_\theta) \cdot \mathcal{F}(v))(x)$$
+
+Converting a convolution in the physical domain into a simple product in the frequency domain, where $\mathcal{F}(\kappa_\theta) = R_\theta$:
+
+$$(K_\theta v)(x) = \mathcal{F}^{-1}(R_\theta \cdot \mathcal{F}(v))(x)$$
+
+Note that if $\kappa_\theta : D \to \mathbb{C}^{d_v \times d_v} \implies \mathcal{F}(\kappa_\theta) \equiv R_\theta : \mathbb{Z}^d \to \mathbb{C}^{d_v \times d_v}$.
+
+Instead of learning the kernel $\kappa_\theta$ in the physical domain, we learn $R_\theta$ in the frequency domain.
+
+By operating directly in the frequency domain, it captures non-local relationships that would be complex to model through spatiotemporal coordinates.
+
+This architecture can be represented as follows:
+
+---
+
+## Navier-Stokes Equation Solutions
+
+Our objective is to critically analyze how neural operators—and Fourier operators in particular—can be employed to approximate the solutions of these models, conceptually comparing this approach with traditional numerical methods. To this end, we use the 2D incompressible Navier-Stokes equations as an example:
+
+$$\begin{aligned} \frac{\partial u}{\partial t}(x,t) + u(x,t) \cdot \nabla u(x,t) &= -\nabla p(x,t) + \nu \nabla^2 u(x,t) + f(x) \\ \nabla \cdot u(x,t) &= 0 \\ u(x,0) &= u_0(x) \end{aligned}$$
+
+where $x \in \mathbb{T}^2$ and $t \in (0, \infty)$.
+
+We train a model capable of predicting the fluid velocity field as the output (the solution to the equation).
+
+---
+
+## Acknowledgements
+
+This repository heavily relies on the following open-source libraries and frameworks:
+
+* **[neuraloperator](https://github.com/neuraloperator/neuraloperator):** Open-source library for Neural Operators in PyTorch.
+* **[PyTorch](https://pytorch.org/):** Deep learning framework for tensor computations.
+* **[NumPy](https://numpy.org/) & [SciPy](https://scipy.org/):** Scientific and numerical computing libraries.
+* **[Matplotlib](https://matplotlib.org/):** Visualization library for generating diagnostic plots.
+
+---
+
+## Citation & References
+
+If you use this repository, the underlying dataset, or the `neuraloperator` library, please cite the foundational works:
+
+### Fourier Neural Operator Paper
+
+```bibtex
+@inproceedings{li2021fourier,
+  title={Fourier Neural Operator for Parametric Partial Differential Equations},
+  author={Zongyi Li and Nikola Kovachki and Kamyar Azizzadenesheli and Burigede Liu and Kaushik Bhattacharya and Andrew Stuart and Anima Anandkumar},
+  booktitle={International Conference on Learning Representations (ICLR)},
+  year={2021}
+}
+
+```
+
+### Neural Operator Software Library
+
+```bibtex
+@misc{neuraloperator2021,
+  author = {Zongyi Li and Daniel Zhengyu Huang and Nikola Kovachki and Kamyar Azizzadenesheli and Anima Anandkumar},
+  title = {NeuralOperator: Learning mappings between function spaces},
+  year = {2021},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{[https://github.com/neuraloperator/neuraloperator](https://github.com/neuraloperator/neuraloperator)}}
+}
+
+```
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://www.google.com/search?q=LICENSE) file for details.
+
+```
+
+```
+

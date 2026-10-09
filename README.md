@@ -1,6 +1,4 @@
-# Neural-Operator
-This repository presents the code developed for my Bachelor's Thesis on neural operators, specifically focusing on predicting 2D fluid velocity using the Navier-Stokes equations.
-
+# Neural Operators
 The proposed work will consist, first, of a rigorous exposition of the mathematical
 foundations of neural operators, including their functional formulation, approximation
 properties, and their relationship with classical numerical methods for differential

@@ -156,7 +156,7 @@ By operating directly in the frequency domain, it captures non-local relationshi
 
 This architecture can be represented as follows:
 
-IMAGEN
+https://github.com/Percival2003/Neural-Operator/blob/d2b80b437a16ada7afa4e0aed91b98c178eccff4/Images/FNO.png
 
 # Navier-Stokes equation solutions
 Our objective is to critically analyze how neural operators—and

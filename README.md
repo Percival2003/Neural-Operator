@@ -158,6 +158,8 @@ This architecture can be represented as follows:
 
 ![Texto alternativo](https://github.com/Percival2003/Neural-Operator/blob/d2b80b437a16ada7afa4e0aed91b98c178eccff4/Images/FNO.png)
 
+<img src="https://github.com/Percival2003/Neural-Operator/blob/d2b80b437a16ada7afa4e0aed91b98c178eccff4/Images/FNO.png" alt="Texto alternativo" width="300">
+
 # Navier-Stokes equation solutions
 Our objective is to critically analyze how neural operators—and
 Fourier operators in particular—can be employed to approximate the solutions of these
